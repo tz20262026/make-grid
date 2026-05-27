@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+﻿<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ステージショーケース 企画書</title>
   <style>
     /* ===== リセット & ベース ===== */
@@ -559,7 +558,7 @@
     }
   </style>
 </head>
-<body>
+<body class="">
 
 <!-- ===== ヘッダー ===== -->
 <header>
@@ -570,7 +569,7 @@
   </h1>
   <div class="header-wave">
     <svg viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#f0f4f8" d="M0,32 C240,60 480,0 720,28 C960,56 1200,8 1440,32 L1440,50 L0,50 Z"/>
+      <path fill="#f0f4f8" d="M0,32 C240,60 480,0 720,28 C960,56 1200,8 1440,32 L1440,50 L0,50 Z"></path>
     </svg>
   </div>
 </header>
@@ -586,7 +585,7 @@
     <div class="summary-divider"></div>
     <div>
       <div class="summary-label">🎭 出演プログラム数</div>
-      <div class="summary-value" id="e-sum2">4 プログラム</div>
+      <div class="summary-value" id="e-sum2">3プログラム</div>
     </div>
     <div class="summary-divider"></div>
     <div>
@@ -603,11 +602,11 @@
     </div>
     <div class="speech-card">
       <div class="speech-label">🎤 AKA先生 セリフ</div>
-      <p id="e-opening-speech"><div>例</div>
+      <p id="e-opening-speech"></p><div>例</div>
         こんにちは！毎週月曜日18時にレッスンをしています、<strong>AKA</strong>と申します。<br>
         本日は、昨年の発表会で盛り上がった思い出のナンバーも織り交ぜながら、特別なショーケースをお届けします。<br>
         子供たちの熱いパフォーマンスを、ぜひ最後までお楽しみください！
-      </p>
+      <p></p>
       <div class="speech-duration" id="e-opening-dur">約 20 秒</div>
     </div>
   </div>
@@ -739,8 +738,8 @@
     </div>
     <div class="speech-card" style="border-left-color: #7c3aed;">
       <div class="speech-label" style="background:#f5f3ff; color:#7c3aed; border-color:#ddd6fe;">🎤 AKA先生 セリフ</div>
-      <p id="e-closing-speech">例<div>ありがとうございました。<br>
-        月曜日に体験会も行っていますので、是非とも遊びにいらして下さい。<br>今からダンスワークショップを開催します。</div><div>是非ともご参加下さい。<br></div></p>
+      <p id="e-closing-speech">例</p><div>ありがとうございました。<br>
+        月曜日に体験会も行っていますので、是非とも遊びにいらして下さい。<br>今からダンスワークショップを開催します。</div><div>是非ともご参加下さい。<br></div><p></p>
       <div class="speech-duration" id="e-closing-dur">約 20 秒</div>
     </div>
   </div>
@@ -764,14 +763,14 @@
 
 <!-- ===== フッター ===== -->
 <footer>
-  <span id="e-footer"><strong>AKA先生クラス</strong> ステージショーケース 企画書 &nbsp;|&nbsp; 毎週月曜 18:00〜</span>
+  <span id="e-footer">ステージショーケース 企画書&nbsp;</span>
 </footer>
 
 <!-- ===== 編集ツールバー ===== -->
 <div id="edit-toolbar">
-  <div id="edit-hint">✏️ 青い点線の箇所をクリックして編集<br>プログラムの追加・削除も可能です</div>
-  <button class="edit-btn" id="btn-save" onclick="saveHTML()">💾 HTMLを保存する</button>
-  <button class="edit-btn" id="btn-cancel" onclick="cancelEdit()">✖ キャンセル</button>
+  <div id="edit-hint" style="display:none">✏️ 青い点線の箇所をクリックして編集<br>プログラムの追加・削除も可能です</div>
+  <button class="edit-btn" id="btn-save" onclick="saveHTML()" style="display:none">💾 HTMLを保存する</button>
+  <button class="edit-btn" id="btn-cancel" onclick="cancelEdit()" style="display:none">✖ キャンセル</button>
   <button class="edit-btn" id="btn-print" onclick="printPlan()">🖨️ 印刷 / PDF保存</button>
   <button class="edit-btn" id="btn-toggle" onclick="toggleEdit()">✏️ 編集モード開始</button>
 </div>
@@ -1005,5 +1004,6 @@
   }
 </script>
 
-</body>
-</html>
+
+
+</body></html>
