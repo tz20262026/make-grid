@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ステージショーケース 企画書</title>
+  <style>
+    /* ===== リセット & ベース ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      background: #f0f4f8;
+      color: #2d3748;
+      min-height: 100vh;
+    }
+
+    /* ===== ヘッダー ===== */
+    header {
+      background: linear-gradient(135deg, #1a3a6b 0%, #2563ab 60%, #3b82f6 100%);
+      color: #fff;
+      text-align: center;
+      padding: 48px 24px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -50px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      padding: 5px 18px;
+      margin-bottom: 18px;
+      color: #c7e0ff;
+      text-transform: uppercase;
+    }
+    header h1 {
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      line-height: 1.25;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+    header h1 span {
+      display: block;
+      font-size: 0.55em;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: #a8d0f5;
+      margin-top: 6px;
+    }
+    .header-wave {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; overflow: hidden;
+      line-height: 0;
+    }
+    .header-wave svg { display: block; }
+
+    /* ===== メインコンテナ ===== */
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    /* ===== セクション共通 ===== */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a3a6b;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+    .section-title .icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, #2563ab, #3b82f6);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(37,99,171,0.3);
+    }
+
+    /* ===== 挨拶カード ===== */
+    .speech-card {
+      background: #fff;
+      border-left: 5px solid #2563ab;
+      border-radius: 0 16px 16px 0;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 16px rgba(37,99,171,0.08);
+      position: relative;
+    }
+    .speech-card::before {
+      content: '❝';
+      font-size: 3rem;
+      color: #dbeafe;
+      position: absolute;
+      top: 8px; right: 20px;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+    .speech-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eff6ff;
+      color: #2563ab;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 3px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      border: 1px solid #bfdbfe;
+    }
+    .speech-card p {
+      font-size: 0.97rem;
+      line-height: 1.9;
+      color: #374151;
+    }
+    .speech-duration {
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .speech-duration::before { content: '⏱'; }
+
+    /* ===== タイムライン ===== */
+    .timeline { position: relative; margin: 0; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 40px;
+      top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #2563ab, #93c5fd, #2563ab);
+      border-radius: 999px;
+    }
+    .tl-item {
+      display: flex;
+      gap: 0;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .tl-number {
+      flex-shrink: 0;
+      width: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 2px;
+      position: relative;
+    }
+    .tl-dot {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a3a6b, #2563ab);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 4px #fff, 0 0 0 6px #2563ab40, 0 4px 12px rgba(37,99,171,0.3);
+      z-index: 1;
+      cursor: default;
+      user-select: none;
+    }
+    .tl-dot.accent {
+      background: linear-gradient(135deg, #b45309, #f59e0b);
+      box-shadow: 0 0 0 4px #fff, 0 0 0 6px #f59e0b40, 0 4px 12px rgba(245,158,11,0.3);
+    }
+    .tl-dot.purple {
+      background: linear-gradient(135deg, #5b21b6, #7c3aed);
+      box-shadow: 0 0 0 4px #fff, 0 0 0 6px #7c3aed40, 0 4px 12px rgba(124,58,237,0.3);
+    }
+    .tl-dot.green {
+      background: linear-gradient(135deg, #065f46, #059669);
+      box-shadow: 0 0 0 4px #fff, 0 0 0 6px #05996940, 0 4px 12px rgba(5,150,105,0.3);
+    }
+    .tl-content {
+      flex: 1;
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 22px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      margin-left: 16px;
+      position: relative;
+    }
+    .tl-content::before {
+      content: '';
+      position: absolute;
+      left: -10px; top: 14px;
+      width: 0; height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 10px solid #fff;
+    }
+    .tl-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .tl-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a3a6b;
+      line-height: 1.4;
+      flex: 1;
+    }
+    .tl-time {
+      background: linear-gradient(135deg, #2563ab, #3b82f6);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(37,99,171,0.25);
+    }
+    .tl-time.amber {
+      background: linear-gradient(135deg, #b45309, #f59e0b);
+      box-shadow: 0 2px 8px rgba(245,158,11,0.25);
+    }
+    .tl-time.purple {
+      background: linear-gradient(135deg, #5b21b6, #7c3aed);
+      box-shadow: 0 2px 8px rgba(124,58,237,0.25);
+    }
+    .tl-time.green {
+      background: linear-gradient(135deg, #065f46, #059669);
+      box-shadow: 0 2px 8px rgba(5,150,105,0.25);
+    }
+    .tl-meta {
+      font-size: 0.83rem;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .tl-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #f3f4f6;
+      border-radius: 6px;
+      padding: 2px 9px;
+      font-size: 0.77rem;
+      color: #4b5563;
+    }
+
+    /* ===== 削除ボタン（タイムラインアイテム） ===== */
+    .tl-delete-btn {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #ef4444;
+      border-radius: 8px;
+      padding: 3px 10px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+      line-height: 1.6;
+    }
+    .tl-delete-btn:hover {
+      background: #ef4444;
+      color: #fff;
+      border-color: #ef4444;
+    }
+    body.edit-mode .tl-delete-btn { display: block; }
+
+    /* ===== タグ追加ボタン ===== */
+    .add-tag-btn {
+      display: none;
+      background: #f0fdf4;
+      border: 1px dashed #86efac;
+      color: #16a34a;
+      border-radius: 6px;
+      padding: 2px 9px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .add-tag-btn:hover {
+      background: #dcfce7;
+      border-color: #16a34a;
+    }
+    body.edit-mode .add-tag-btn { display: inline-flex; align-items: center; }
+
+    /* ===== タグ削除ボタン ===== */
+    .tag-del {
+      display: none;
+      margin-left: 4px;
+      cursor: pointer;
+      color: #9ca3af;
+      font-size: 0.85em;
+      font-weight: 900;
+    }
+    .tag-del:hover { color: #ef4444; }
+    body.edit-mode .tag-del { display: inline; }
+
+    /* ===== プログラム追加ボタン ===== */
+    #btn-add-program {
+      display: none;
+      width: 100%;
+      padding: 16px;
+      border: 2px dashed #93c5fd;
+      background: #eff6ff;
+      border-radius: 12px;
+      color: #2563ab;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+      margin-top: 4px;
+    }
+    #btn-add-program:hover {
+      background: #dbeafe;
+      border-color: #2563ab;
+    }
+    body.edit-mode #btn-add-program { display: block; }
+
+    /* ===== ワークショップ詳細ボックス ===== */
+    .ws-detail-box {
+      background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+      border: 1.5px solid #6ee7b7;
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-top: 4px;
+    }
+    .ws-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .ws-step-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ws-step-body { flex: 1; }
+    .ws-step-title {
+      font-size: 0.93rem;
+      font-weight: 700;
+      color: #065f46;
+      margin-bottom: 3px;
+    }
+    .ws-step-desc {
+      font-size: 0.84rem;
+      color: #374151;
+      line-height: 1.65;
+    }
+    .ws-arrow {
+      text-align: center;
+      color: #34d399;
+      font-size: 1.1rem;
+      font-weight: 900;
+      margin: 6px 0 6px 20px;
+    }
+
+    /* ===== 総尺サマリー ===== */
+    .summary-card {
+      background: linear-gradient(135deg, #1a3a6b 0%, #2563ab 100%);
+      color: #fff;
+      border-radius: 20px;
+      padding: 28px 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 8px 32px rgba(37,99,171,0.28);
+      margin-bottom: 40px;
+    }
+    .summary-label { font-size: 0.82rem; color: #93c5fd; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .summary-value { font-size: 1.6rem; font-weight: 800; }
+    .summary-divider {
+      width: 1px; height: 48px;
+      background: rgba(255,255,255,0.2);
+      flex-shrink: 0;
+    }
+
+    /* ===== 備考カード ===== */
+    .note-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      border-top: 4px solid #f59e0b;
+    }
+    .note-card ul { list-style: none; padding: 0; margin-top: 4px; }
+    .note-card ul li {
+      padding: 10px 0 10px 28px;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #374151;
+      border-bottom: 1px dashed #e5e7eb;
+      position: relative;
+    }
+    .note-card ul li:last-child { border-bottom: none; }
+    .note-card ul li::before {
+      content: '🎵';
+      position: absolute;
+      left: 0; top: 10px;
+    }
+
+    /* ===== セクション間スペース ===== */
+    .section { margin-bottom: 44px; }
+
+    /* ===== フッター ===== */
+    footer {
+      text-align: center;
+      padding: 28px 16px;
+      color: #9ca3af;
+      font-size: 0.78rem;
+      border-top: 1px solid #e5e7eb;
+      background: #fff;
+    }
+    footer strong { color: #2563ab; }
+
+    /* ===== 編集ツールバー ===== */
+    #edit-toolbar {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    .edit-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+      transition: transform 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    .edit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.22); }
+    .edit-btn:active { transform: translateY(0); }
+    #btn-toggle {
+      background: linear-gradient(135deg, #1a3a6b, #2563ab);
+      color: #fff;
+    }
+    #btn-toggle.active {
+      background: linear-gradient(135deg, #064e3b, #059669);
+    }
+    #btn-save {
+      background: linear-gradient(135deg, #b45309, #f59e0b);
+      color: #fff;
+      display: none;
+    }
+    #btn-cancel {
+      background: #f3f4f6;
+      color: #374151;
+      display: none;
+    }
+    #btn-print {
+      background: linear-gradient(135deg, #5b21b6, #7c3aed);
+      color: #fff;
+    }
+    #edit-hint {
+      background: rgba(37,99,171,0.92);
+      color: #fff;
+      font-size: 0.78rem;
+      padding: 8px 16px;
+      border-radius: 10px;
+      display: none;
+      text-align: center;
+      line-height: 1.6;
+      max-width: 240px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    }
+
+    /* ===== 編集モード中のハイライト ===== */
+    body.edit-mode [contenteditable="true"] {
+      outline: 2px dashed #3b82f6;
+      outline-offset: 3px;
+      border-radius: 4px;
+      cursor: text;
+      transition: background 0.15s;
+    }
+    body.edit-mode [contenteditable="true"]:hover {
+      background: rgba(59,130,246,0.07);
+    }
+    body.edit-mode [contenteditable="true"]:focus {
+      outline: 2px solid #2563ab;
+      background: rgba(59,130,246,0.06);
+    }
+    /* ドットは番号だけ編集なので特別扱い */
+    body.edit-mode .tl-dot[contenteditable="true"] {
+      cursor: text;
+      outline-offset: -2px;
+    }
+
+    /* ===== 印刷スタイル ===== */
+    @media print {
+      #edit-toolbar { display: none !important; }
+      body { background: #fff; }
+      header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .summary-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-shadow: none; }
+      .tl-content { box-shadow: none; }
+      .tl-dot { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .tl-time { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .tl-delete-btn, .add-tag-btn, .tag-del, #btn-add-program { display: none !important; }
+    }
+
+    /* ===== レスポンシブ ===== */
+    @media (max-width: 560px) {
+      .timeline::before { left: 18px; }
+      .tl-number { width: 46px; }
+      .tl-dot { width: 30px; height: 30px; font-size: 0.85rem; }
+      .tl-content { margin-left: 12px; padding: 14px 16px; }
+      .summary-divider { display: none; }
+      .summary-card { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== ヘッダー ===== -->
+<header>
+  <div class="header-badge" id="e-badge">✨ Stage Showcase Plan</div>
+  <h1>
+    <span id="e-h1-main">北谷スポーツセンター祭 カルチャースクール</span>
+    <span id="e-h1-sub">パフォーマンスショーケース＆ダンスワークショップ</span>
+  </h1>
+  <div class="header-wave">
+    <svg viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#f0f4f8" d="M0,32 C240,60 480,0 720,28 C960,56 1200,8 1440,32 L1440,50 L0,50 Z"/>
+    </svg>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== 総尺サマリー ===== -->
+  <div class="summary-card">
+    <div>
+      <div class="summary-label">⏱ 総ステージ時間</div>
+      <div class="summary-value" id="e-sum1">約 20 分</div>
+    </div>
+    <div class="summary-divider"></div>
+    <div>
+      <div class="summary-label">🎭 出演プログラム数</div>
+      <div class="summary-value" id="e-sum2">4 プログラム</div>
+    </div>
+    <div class="summary-divider"></div>
+    <div>
+      <div class="summary-label">📅 レッスン日</div>
+      <div class="summary-value" id="e-sum3" style="font-size:1.15rem;">10/4（日）13時～</div>
+    </div>
+  </div>
+
+  <!-- ===== オープニング挨拶 ===== -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">👋</div>
+      <span id="e-sec1-title">オープニング挨拶（AKA先生）</span>
+    </div>
+    <div class="speech-card">
+      <div class="speech-label">🎤 AKA先生 セリフ</div>
+      <p id="e-opening-speech"><div>例</div>
+        こんにちは！毎週月曜日18時にレッスンをしています、<strong>AKA</strong>と申します。<br>
+        本日は、昨年の発表会で盛り上がった思い出のナンバーも織り交ぜながら、特別なショーケースをお届けします。<br>
+        子供たちの熱いパフォーマンスを、ぜひ最後までお楽しみください！
+      </p>
+      <div class="speech-duration" id="e-opening-dur">約 20 秒</div>
+    </div>
+  </div>
+
+  <!-- ===== タイムスケジュール ===== -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">📋</div>
+      <span id="e-sec2-title">ステージ進行 タイムスケジュール</span>
+    </div>
+
+    <div class="timeline" id="timeline-container">
+
+      <!-- No.1 挨拶 -->
+      <div class="tl-item">
+        <div class="tl-number">
+          <div class="tl-dot">1</div>
+        </div>
+        <div class="tl-content">
+          <button class="tl-delete-btn" onclick="deleteProgram(this)">✕ 削除</button>
+          <div class="tl-header">
+            <div class="tl-title" id="e-tl1-title">🎙 最初の挨拶（AKA先生）</div>
+            <div class="tl-time" id="e-tl1-time">約 20 秒</div>
+          </div>
+          <div class="tl-meta">
+            <span class="tl-tag" id="e-tl1-tag1">👤 AKA先生<span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <span class="tl-tag" id="e-tl1-tag2">🎤 スピーチ<span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <button class="add-tag-btn" onclick="addTag(this)">＋ タグ追加</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- No.2 鬼滅 -->
+      <div class="tl-item">
+        <div class="tl-number">
+          <div class="tl-dot accent">2</div>
+        </div>
+        <div class="tl-content">
+          <button class="tl-delete-btn" onclick="deleteProgram(this)">✕ 削除</button>
+          <div class="tl-header">
+            <div class="tl-title" id="e-tl2-title">⚔️ 鬼滅の刃 コスプレショー</div>
+            <div class="tl-time amber" id="e-tl2-time">4 分 20 秒</div>
+          </div>
+          <div class="tl-meta">
+            <span class="tl-tag" id="e-tl2-tag1">👥 出演：約10名<span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <span class="tl-tag" id="e-tl2-tag2">🎭 コスプレ<span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <span class="tl-tag" id="e-tl2-tag3">💃 ダンス・パフォーマンス<span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <button class="add-tag-btn" onclick="addTag(this)">＋ タグ追加</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- No.3 ヒップホップ -->
+      <div class="tl-item">
+        <div class="tl-number">
+          <div class="tl-dot purple">3</div>
+        </div>
+        <div class="tl-content">
+          <button class="tl-delete-btn" onclick="deleteProgram(this)">✕ 削除</button>
+          <div class="tl-header">
+            <div class="tl-title" id="e-tl3-title">🎶 ヒップホップ ダンスショー</div>
+            <div class="tl-time purple" id="e-tl3-time">4 分 20 秒</div>
+          </div>
+          <div class="tl-meta">
+            <span class="tl-tag" id="e-tl3-tag1">🏆 昨年発表会曲含む<span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <span class="tl-tag" id="e-tl3-tag2">🕺 ヒップホップ<span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <button class="add-tag-btn" onclick="addTag(this)">＋ タグ追加</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- No.4 ワークショップ -->
+      <div class="tl-item">
+        <div class="tl-number">
+          <div class="tl-dot green">4</div>
+        </div>
+        <div class="tl-content" style="border-left: 4px solid #059669; padding-left: 20px;">
+          <button class="tl-delete-btn" onclick="deleteProgram(this)">✕ 削除</button>
+          <div class="tl-header">
+            <div class="tl-title" id="e-tl4-title">🎓 体験レッスン ワークショップ</div>
+            <div class="tl-time green" id="e-tl4-time">5分休憩 → 10分</div>
+          </div>
+          <div class="tl-meta" style="margin-bottom: 12px;">
+            <span class="tl-tag" id="e-tl4-tag1">🙌 参加自由<span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <span class="tl-tag" id="e-tl4-tag2">👶 子ども〜大人OK<span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <span class="tl-tag" id="e-tl4-tag3">📋 受付あり<span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <button class="add-tag-btn" onclick="addTag(this)">＋ タグ追加</button>
+          </div>
+          <!-- ワークショップ詳細ボックス -->
+          <div class="ws-detail-box">
+            <div class="ws-step">
+              <div class="ws-step-icon">💤</div>
+              <div class="ws-step-body">
+                <div class="ws-step-title" id="e-ws1-title">5分間 休憩</div>
+                <div class="ws-step-desc" id="e-ws1-desc">ステージ終了後、いったん休憩します。ご自由にお過ごしください。</div>
+              </div>
+            </div>
+            <div class="ws-arrow">↓</div>
+            <div class="ws-step">
+              <div class="ws-step-icon">🎵</div>
+              <div class="ws-step-body">
+                <div class="ws-step-title" id="e-ws2-title">10分間 体験レッスン開始</div>
+                <div class="ws-step-desc" id="e-ws2-desc">AKA先生が実際にレッスンを体験していただけるワークショップを行います。ダンスが初めての方も大歓迎！</div>
+              </div>
+            </div>
+            <div class="ws-arrow">↓</div>
+            <div class="ws-step">
+              <div class="ws-step-icon">📝</div>
+              <div class="ws-step-body">
+                <div class="ws-step-title" id="e-ws3-title">体験会のご案内・受付</div>
+                <div class="ws-step-desc" id="e-ws3-desc">毎週月曜18時〜レッスン開催中！体験会のお申し込みは<strong>受付スタッフまで</strong>お声がけください。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- プログラム追加ボタン（編集モード時のみ表示） -->
+      <button id="btn-add-program" onclick="addProgram()">＋ プログラムを追加する</button>
+
+    </div>
+  </div>
+
+  <!-- ===== クロージング挨拶 ===== -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">🙏</div>
+      <span id="e-sec3-title">挨拶（AKA先生）</span>
+    </div>
+    <div class="speech-card" style="border-left-color: #7c3aed;">
+      <div class="speech-label" style="background:#f5f3ff; color:#7c3aed; border-color:#ddd6fe;">🎤 AKA先生 セリフ</div>
+      <p id="e-closing-speech">例<div>ありがとうございました。<br>
+        月曜日に体験会も行っていますので、是非とも遊びにいらして下さい。<br>今からダンスワークショップを開催します。</div><div>是非ともご参加下さい。<br></div></p>
+      <div class="speech-duration" id="e-closing-dur">約 20 秒</div>
+    </div>
+  </div>
+
+  <!-- ===== 備考（ワークショップ案内） ===== -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">📝</div>
+      <span id="e-sec4-title">備考・ワークショップ案内</span>
+    </div>
+    <div class="note-card">
+      <ul>
+        <li id="e-note1">体験会のお申し込みは<strong>受付スタッフ</strong>へお声がけください（ステージ会場内に受付あり）。</li>
+        <li id="e-note2">毎週<strong>月曜日 18:00〜</strong>レッスン開催中！初心者・未経験の方も大歓迎です。</li>
+        <li id="e-note3">ワークショップ参加は<strong>無料・申込不要</strong>。当日そのままご参加いただけます。</li>
+      </ul>
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <span id="e-footer"><strong>AKA先生クラス</strong> ステージショーケース 企画書 &nbsp;|&nbsp; 毎週月曜 18:00〜</span>
+</footer>
+
+<!-- ===== 編集ツールバー ===== -->
+<div id="edit-toolbar">
+  <div id="edit-hint">✏️ 青い点線の箇所をクリックして編集<br>プログラムの追加・削除も可能です</div>
+  <button class="edit-btn" id="btn-save" onclick="saveHTML()">💾 HTMLを保存する</button>
+  <button class="edit-btn" id="btn-cancel" onclick="cancelEdit()">✖ キャンセル</button>
+  <button class="edit-btn" id="btn-print" onclick="printPlan()">🖨️ 印刷 / PDF保存</button>
+  <button class="edit-btn" id="btn-toggle" onclick="toggleEdit()">✏️ 編集モード開始</button>
+</div>
+
+<script>
+  // ========== 設定 ==========
+  // 静的な編集可能要素（ID指定）
+  const EDITABLE_IDS = [
+    'e-badge', 'e-h1-main', 'e-h1-sub',
+    'e-sum1', 'e-sum2', 'e-sum3',
+    'e-sec1-title', 'e-opening-speech', 'e-opening-dur',
+    'e-sec2-title',
+    'e-tl4-title', 'e-tl4-time', 'e-tl4-tag1', 'e-tl4-tag2', 'e-tl4-tag3',
+    'e-ws1-title', 'e-ws1-desc', 'e-ws2-title', 'e-ws2-desc', 'e-ws3-title', 'e-ws3-desc',
+    'e-sec3-title', 'e-closing-speech', 'e-closing-dur',
+    'e-sec4-title', 'e-note1', 'e-note2', 'e-note3',
+    'e-footer'
+  ];
+
+  // タイムライン内で編集可能にするクラス
+  const TL_EDITABLE = ['.tl-title', '.tl-time', '.tl-tag'];
+
+  // ドットのカラークラス順（ループ）
+  const DOT_COLORS = ['', 'accent', 'purple', 'green'];
+
+  let isEditMode = false;
+
+  // ========== 編集モード 開/閉 ==========
+  function toggleEdit() {
+    isEditMode = !isEditMode;
+    const btnToggle = document.getElementById('btn-toggle');
+    const btnSave   = document.getElementById('btn-save');
+    const btnCancel = document.getElementById('btn-cancel');
+    const hint      = document.getElementById('edit-hint');
+
+    if (isEditMode) {
+      // 静的要素を編集可能に
+      EDITABLE_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.setAttribute('contenteditable', 'true');
+      });
+      // タイムライン内要素を編集可能に
+      TL_EDITABLE.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => el.setAttribute('contenteditable', 'true'));
+      });
+
+      document.body.classList.add('edit-mode');
+      btnToggle.textContent = '✅ 編集中…';
+      btnToggle.classList.add('active');
+      btnSave.style.display   = 'flex';
+      btnCancel.style.display = 'flex';
+      hint.style.display      = 'block';
+    } else {
+      disableEdit();
+    }
+  }
+
+  // 編集を無効化する共通処理
+  function disableEdit() {
+    EDITABLE_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.removeAttribute('contenteditable');
+    });
+    TL_EDITABLE.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => el.removeAttribute('contenteditable'));
+    });
+
+    document.body.classList.remove('edit-mode');
+    const btnToggle = document.getElementById('btn-toggle');
+    const btnSave   = document.getElementById('btn-save');
+    const btnCancel = document.getElementById('btn-cancel');
+    const hint      = document.getElementById('edit-hint');
+    btnToggle.textContent = '✏️ 編集モード開始';
+    btnToggle.classList.remove('active');
+    btnSave.style.display   = 'none';
+    btnCancel.style.display = 'none';
+    hint.style.display      = 'none';
+    isEditMode = false;
+  }
+
+  // キャンセル（リロードして元に戻す）
+  function cancelEdit() {
+    if (confirm('編集内容を破棄して元に戻しますか？')) {
+      location.reload();
+    }
+  }
+
+  // ========== プログラム追加 ==========
+  function addProgram() {
+    const timeline = document.getElementById('timeline-container');
+    const addBtn   = document.getElementById('btn-add-program');
+    const items    = timeline.querySelectorAll('.tl-item');
+    const newNum   = items.length + 1;
+    const colorCls = DOT_COLORS[(newNum - 1) % DOT_COLORS.length];
+    const timeCls  = colorCls === 'accent' ? 'amber' : colorCls;
+
+    const item = document.createElement('div');
+    item.className = 'tl-item';
+    item.innerHTML = `
+      <div class="tl-number">
+        <div class="tl-dot${colorCls ? ' ' + colorCls : ''}"></div>
+      </div>
+      <div class="tl-content">
+        <button class="tl-delete-btn" onclick="deleteProgram(this)">✕ 削除</button>
+        <div class="tl-header">
+          <div class="tl-title" contenteditable="true">🎵 新しいプログラム</div>
+          <div class="tl-time${timeCls ? ' ' + timeCls : ''}" contenteditable="true">0 分 0 秒</div>
+        </div>
+        <div class="tl-meta">
+          <span class="tl-tag" contenteditable="true">👥 出演：<span class="tag-del" onclick="removeTag(this)">×</span></span>
+          <button class="add-tag-btn" onclick="addTag(this)">＋ タグ追加</button>
+        </div>
+      </div>
+    `;
+
+    timeline.insertBefore(item, addBtn);
+    renumberDots();
+    updateProgramCount();
+
+    // 追加したアイテムのタイトルにフォーカス
+    const newTitle = item.querySelector('.tl-title');
+    if (newTitle) {
+      newTitle.focus();
+      // テキストを全選択
+      const range = document.createRange();
+      range.selectNodeContents(newTitle);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  }
+
+  // ========== プログラム削除 ==========
+  function deleteProgram(btn) {
+    const item = btn.closest('.tl-item');
+    if (confirm('このプログラムを削除しますか？')) {
+      item.remove();
+      renumberDots();
+      updateProgramCount();
+    }
+  }
+
+  // ========== ドット番号の再付番 ==========
+  function renumberDots() {
+    const dots   = document.querySelectorAll('#timeline-container .tl-item .tl-dot');
+    const colors = DOT_COLORS;
+    dots.forEach((dot, i) => {
+      dot.textContent = i + 1;
+      // カラークラスをリセット
+      dot.className = 'tl-dot';
+      const cls = colors[i % colors.length];
+      if (cls) dot.classList.add(cls);
+      // 対応する tl-time のカラーも合わせる
+      const content = dot.closest('.tl-item').querySelector('.tl-content');
+      if (content) {
+        const timeEl = content.querySelector('.tl-time');
+        if (timeEl) {
+          timeEl.className = 'tl-time';
+          const timeCls = cls === 'accent' ? 'amber' : cls;
+          if (timeCls) timeEl.classList.add(timeCls);
+        }
+      }
+    });
+  }
+
+  // ========== サマリー件数を自動更新 ==========
+  function updateProgramCount() {
+    const count = document.querySelectorAll('#timeline-container .tl-item').length;
+    const el = document.getElementById('e-sum2');
+    if (el) el.textContent = count + ' プログラム';
+  }
+
+  // ========== タグ追加 ==========
+  function addTag(btn) {
+    const meta = btn.closest('.tl-meta');
+    const tag = document.createElement('span');
+    tag.className = 'tl-tag';
+    tag.setAttribute('contenteditable', 'true');
+    tag.innerHTML = '🏷 タグ<span class="tag-del" onclick="removeTag(this)">×</span>';
+    meta.insertBefore(tag, btn);
+    tag.focus();
+  }
+
+  // ========== タグ削除 ==========
+  function removeTag(span) {
+    const tag = span.closest('.tl-tag');
+    if (tag) tag.remove();
+  }
+
+  // ========== 印刷 / PDF保存 ==========
+  function printPlan() {
+    // 編集モードなら一時解除して印刷
+    if (isEditMode) {
+      document.body.classList.remove('edit-mode');
+      window.print();
+      document.body.classList.add('edit-mode');
+    } else {
+      window.print();
+    }
+  }
+
+  // ========== HTMLを保存（ダウンロード） ==========
+  function saveHTML() {
+    // 編集モードを解除
+    disableEdit();
+
+    // ツールバーを一時非表示にしてHTMLを取得
+    const toolbar = document.getElementById('edit-toolbar');
+    toolbar.style.display = 'none';
+
+    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+    toolbar.style.display = 'flex';
+
+    // ダウンロード
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'showcase_plan.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    // 保存完了を通知
+    const btn = document.getElementById('btn-save');
+    const orig = btn.textContent;
+    btn.textContent = '✅ 保存完了！';
+    setTimeout(() => { btn.textContent = orig; }, 2000);
+  }
+</script>
+
+</body>
+</html>
